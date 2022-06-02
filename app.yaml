@@ -1,0 +1,12 @@
+runtime: python37
+
+env_variables:
+  MYSQL_UNIX_SOCKET: "/cloudsql/roomah-351214:us-east1:roomah-project"
+  MYSQL_USER: "user"
+  MYSQL_PASSWORD: "roomah"
+  MYSQL_DB: "roomah"
+  MYSQL_CURSORCLASS: "DictCursor"
+  MYSQL_HOST: "10.74.65.3"
+
+vpc_access_connector:
+  name: "projects/roomah-351214/locations/us-east1/connectors/roomah-project"
