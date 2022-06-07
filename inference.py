@@ -24,7 +24,7 @@ def get_category(img):
     # Expand img dimensions from (224, 224, 3) to (1, 224, 224, 3) for set_tensor method call
     img = np.expand_dims(img, axis=0)
 
-    tflite_model_file = 'static/model/converted_model.tflite'
+    tflite_model_file = './prod_model.tflite'
 
     with open(tflite_model_file, 'rb') as fid:
         tflite_model = fid.read()
@@ -39,10 +39,12 @@ def get_category(img):
     interpreter.set_tensor(input_index, img)
     interpreter.invoke()
     prediction.append(interpreter.get_tensor(output_index))
-
-    class_names = ['Bathroom', 'Bedroom', 'Dinning', 'Kitchen', 'Livingroom']
     
-    return class_names[predicted_label]
+    predicted_label = [np.argmax(_prediction) for _prediction in prediction]
+    class_names = ['Bathroom', 'Bedroom', 'Dinning', 'Kitchen', 'Livingroom']
+    predicted_label = [class_names[index] for index in predicted_label]
+
+    return predicted_label
 
 
 # def plot_category(img):
