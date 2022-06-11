@@ -13,7 +13,7 @@ def roomah():
         # Get category of prediction
         image_category = get_category(img)
         # Plot the category
-        return make_response(jsonify({"error":"false","message":"success","result":image_>
+        return make_response(jsonify({"error":"false","message":"success","result":image_category[0]}))
     return make_response(jsonify({"error":"true","message":"failed"}))
 
 if __name__ == '__main__':
