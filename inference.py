@@ -41,7 +41,7 @@ def get_category(img):
     prediction.append(interpreter.get_tensor(output_index))
     
     predicted_label = [np.argmax(_prediction) for _prediction in prediction]
-    class_names = ['Bathroom', 'Bedroom', 'Dinning', 'Kitchen', 'Livingroom']
+    class_names = ['Bathroom', 'Bedroom', 'Dining Room', 'Kitchen', 'Living Room']
     predicted_label = [class_names[index] for index in predicted_label]
 
     return predicted_label
